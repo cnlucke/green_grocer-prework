@@ -22,7 +22,7 @@ def apply_coupons(cart, coupons)
       coupon_num = coupon_match[:num]
       coupon_cost = coupon_match[:cost]
 
-      if item_info[:count] > coupon_num
+      if item_info[:count] >= coupon_num
         new_cart[item] = {}
         new_cart[item][:price] = item_info[:price]
         new_cart[item][:clearance] = item_info[:clearance]
@@ -30,13 +30,13 @@ def apply_coupons(cart, coupons)
         new_cart[item + " W/COUPON"] = {}
         new_cart[item + " W/COUPON"][:price] = coupon_cost
         new_cart[item + " W/COUPON"][:clearance] = item_info[:clearance]
-        new_cart[item + " W/COUPON"][:count] = item_info[:count] - new_cart[item][:count]
-      elsif (item_info[:count] % coupon_num) == 0 #no regularly-priced items added
-        new_cart[item + " W/COUPON"] = {}
-        new_cart[item + " W/COUPON"][:price] = coupon_cost
-        new_cart[item + " W/COUPON"][:clearance] = item_info[:clearance]
-        new_cart[item + " W/COUPON"][:count] = item_info[:count] - (item_info[:count] % coupon_num)
-      else #coupon doesn't apply, add without coupon
+        new_cart[item + " W/COUPON"][:count] = item_info[:count] / coupon_num
+      # elsif (item_info[:count] % coupon_num) == 0 #no regularly-priced items added
+      #   new_cart[item + " W/COUPON"] = {}
+      #   new_cart[item + " W/COUPON"][:price] = coupon_cost
+      #   new_cart[item + " W/COUPON"][:clearance] = item_info[:clearance]
+      #   new_cart[item + " W/COUPON"][:count] = item_info[:count] - (item_info[:count] % coupon_num)
+      else #not enough items so coupon doesn't apply, add without coupon
         new_cart[item] = {}
         new_cart[item][:price] = item_info[:price]
         new_cart[item][:clearance] = item_info[:clearance]
