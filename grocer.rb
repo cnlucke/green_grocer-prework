@@ -1,16 +1,31 @@
 def consolidate_cart(cart)
-  new_cart = []
+  new_cart = {}
 
   cart.uniq.each do |item|
-    new_cart << item
-    new_cart[new_cart.index(item)][item.keys[0]][:count] = cart.count(item)
+    new_cart.merge!(item)
+    new_cart[item.keys[0]][:count] = cart.count(item)
   end
 
   new_cart
 end
 
 def apply_coupons(cart, coupons)
-  # code here
+  new_cart = []
+  coupon_item = ""
+
+  coupons.each do |coupon|
+    coupon_item = coupon[:item]
+    coupon_num = coupon[:num]
+    coupon_cost = coupon[:cost]
+
+    cart.each do |item, item_info|
+
+    if cart.has_key?(coupon_item)
+
+
+  end
+
+  new_cart
 end
 
 def apply_clearance(cart)
