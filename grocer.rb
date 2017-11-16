@@ -21,15 +21,12 @@ def apply_coupons(cart, coupons)
       if item_info[:count] > coupon_num
         new_cart[item] = {}
         new_cart[item] = item_info
-        puts "item_info[:count]: #{item_info[:count]}!"
-        puts "coupon_num: #{coupon_num}!"
-        puts "item_info[:count] mod: #{item_info[:count] % coupon_num}!"
-
         new_cart[item][:count] = item_info[:count] % coupon_num
         new_cart[item + " W/COUPON"] = {}
         new_cart[item + " W/COUPON"][:price] = coupon_cost
         new_cart[item + " W/COUPON"][:clearance] = item_info[:clearance]
-        puts "item_info[:count] - new_cart[item][:count] #{item_info[:count] - new_cart[item][:count]}!"
+        puts "item_info[:count]: #{item_info[:count]}"
+        puts "new_cart[item][:count] #{new_cart[item][:count]}!"
 
         new_cart[item + " W/COUPON"][:count] = item_info[:count] - new_cart[item][:count]
       else #coupon doesn't apply, add without coupon
