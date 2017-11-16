@@ -71,5 +71,22 @@ def apply_clearance(cart)
 end
 
 def checkout(cart, coupons)
-  # code here
+  new_cart = {}
+  total = 0.00
+  # Apply coupon discounts if the proper number of items are present.
+  new_cart = apply_coupons(cart, coupons)
+  # Apply 20% discount if items are on clearance.
+  new_cart = apply_clearance(new_cart)
+
+  #total the cart
+  cart.each do |item, item_info|
+    total += (item_info[:price] * item_info[:count])
+  end
+
+  # If, after applying the coupon discounts and the clearance discounts, the cart's total is over $100, then apply a 10% discount.
+  if total > 100
+    total = (total * .90).round(2)
+  end
+
+  total
 end
