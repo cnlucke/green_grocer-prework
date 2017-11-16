@@ -17,6 +17,7 @@ def apply_coupons(cart, coupons)
 
   cart.each do |item, item_info|
     if item == coupon_item
+      puts "item_info[:count]: #{item_info[:count]}!"
       if item_info[:count] >= coupon_num
         new_cart[item] = {}
         new_cart[item] = item_info
