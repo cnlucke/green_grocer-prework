@@ -16,7 +16,7 @@ def apply_coupons(cart, coupons)
   coupon_cost = coupons[:cost]
 
   cart.each do |item, item_info|
-    if cart.has_key?(coupon_item)
+    if item == coupon_item
       #apply coupon
     else #add item without coupon
       new_cart[item] = item_info
