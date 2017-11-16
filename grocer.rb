@@ -14,7 +14,7 @@ def apply_coupons(cart, coupons)
   coupon_match = {}
 
   cart.each do |item, item_info|
-    # is there a coupon for this item? If so, save info
+
     coupon_match = coupons.detect { |coupon| coupon[:item] == item }
 
     if !coupon_match.nil?
