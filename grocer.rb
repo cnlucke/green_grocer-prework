@@ -20,7 +20,12 @@ def apply_coupons(cart, coupons)
       if item_info[:count] >= coupon_num
         puts "APPLY COUPON!"
         new_cart[item] = {}
+        new_cart[item] = item_info
+        new_cart[item][:count] % coupon_num
         new_cart[item + " W/COUPON"] = {}
+        new_cart[item + " W/COUPON"][:price] = coupon_cost
+        new_cart[item + " W/COUPON"][:clearance] = item_info[:clearance]
+        new_cart[item + " W/COUPON"][:count] = (item_info[:count] / coupon_num) * coupon_num
       else #coupon doesn't apply, add without coupon
         new_cart[item] = item_info
       end
