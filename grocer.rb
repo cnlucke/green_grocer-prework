@@ -35,7 +35,7 @@ def apply_coupons(cart, coupons)
         new_cart[item + " W/COUPON"] = {}
         new_cart[item + " W/COUPON"][:price] = coupon_cost
         new_cart[item + " W/COUPON"][:clearance] = item_info[:clearance]
-        new_cart[item + " W/COUPON"][:count] = item_info[:count] - new_cart[item][:count]
+        new_cart[item + " W/COUPON"][:count] = item_info[:count] - (item_info[:count] % coupon_num)
       else #coupon doesn't apply, add without coupon
         new_cart[item] = {}
         new_cart[item][:price] = item_info[:price]
