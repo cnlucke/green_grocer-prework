@@ -11,38 +11,49 @@ end
 
 def apply_coupons(cart, coupons)
   new_cart = {}
-  coupon_item = coupons[:item]
-  coupon_num = coupons[:num]
-  coupon_cost = coupons[:cost]
 
-  cart.each do |item, item_info|
-    if item == coupon_item
-      puts "item_info: #{item_info}"
-      if item_info[:count] > coupon_num
-        new_cart[item] = {}
-        new_cart[item][:price] = item_info[:price]
-        new_cart[item][:clearance] = item_info[:clearance]
-        new_cart[item][:count] = item_info[:count] % coupon_num
-        new_cart[item + " W/COUPON"] = {}
-        new_cart[item + " W/COUPON"][:price] = coupon_cost
-        new_cart[item + " W/COUPON"][:clearance] = item_info[:clearance]
-        new_cart[item + " W/COUPON"][:count] = item_info[:count] - new_cart[item][:count]
-      elsif item_info[:count] == coupon_num #no regularly-priced items added
-        new_cart[item + " W/COUPON"] = {}
-        new_cart[item + " W/COUPON"][:price] = coupon_cost
-        new_cart[item + " W/COUPON"][:clearance] = item_info[:clearance]
-        new_cart[item + " W/COUPON"][:count] = item_info[:count] - new_cart[item][:count]
-      else #coupon doesn't apply, add without coupon
-        new_cart[item] = {}
-        new_cart[item][:price] = item_info[:price]
-        new_cart[item][:clearance] = item_info[:clearance]
-        new_cart[item][:count] = item_info[:count] % coupon_num
+  coupons.each do |coupon|
+
+
+    cart.each do |item, item_info|
+      # is there a coupon for this item?
+      coupons.each do |coupon|
+        if coupon[:item] == item
+          coupon_item = coupon[:item]
+          coupon_num = coupon[:num]
+          coupon_cost = coupon[:cost]
+        end
       end
-    else #add item without coupon
-      new_cart[item] = item_info
+
+      if item == coupon_item
+        if item_info[:count] > coupon_num
+          new_cart[item] = {}
+          new_cart[item][:price] = item_info[:price]
+          new_cart[item][:clearance] = item_info[:clearance]
+          new_cart[item][:count] = item_info[:count] % coupon_num
+          new_cart[item + " W/COUPON"] = {}
+          new_cart[item + " W/COUPON"][:price] = coupon_cost
+          new_cart[item + " W/COUPON"][:clearance] = item_info[:clearance]
+          new_cart[item + " W/COUPON"][:count] = item_info[:count] - new_cart[item][:count]
+        elsif item_info[:count] == coupon_num #no regularly-priced items added
+          new_cart[item + " W/COUPON"] = {}
+          new_cart[item + " W/COUPON"][:price] = coupon_cost
+          new_cart[item + " W/COUPON"][:clearance] = item_info[:clearance]
+          new_cart[item + " W/COUPON"][:count] = item_info[:count] - new_cart[item][:count]
+        else #coupon doesn't apply, add without coupon
+          new_cart[item] = {}
+          new_cart[item][:price] = item_info[:price]
+          new_cart[item][:clearance] = item_info[:clearance]
+          new_cart[item][:count] = item_info[:count]
+        end
+      else #add item without coupon
+        new_cart[item] = {}
+        new_cart[item][:price] = item_info[:price]
+        new_cart[item][:clearance] = item_info[:clearance]
+        new_cart[item][:count] = item_info[:count]
+      end
     end
   end
-
   new_cart
 end
 
