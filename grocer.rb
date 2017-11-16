@@ -23,6 +23,7 @@ def apply_coupons(cart, coupons)
         new_cart[item] = item_info
         puts "item_info[:count]: #{item_info[:count]}!"
         puts "coupon_num: #{coupon_num}!"
+        puts "item_info[:count] mod: #{item_info[:count] % coupon_num}!"
 
         new_cart[item][:count] = item_info[:count] % coupon_num
         new_cart[item + " W/COUPON"] = {}
