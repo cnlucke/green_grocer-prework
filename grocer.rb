@@ -70,7 +70,7 @@ def apply_clearance(cart)
   new_cart
 end
 
-def checkout(consolidate_cart(cart:[]), coupons)
+def checkout(consolidate_cart(cart:[]), coupons: [])
   new_cart = {}
   total = 0.00
   # Apply coupon discounts if the proper number of items are present.
