@@ -3,7 +3,7 @@ def consolidate_cart(cart)
 
   cart.each do |item|
     new_cart << item
-    new_cart[new_cart.index(item)][:count] = cart.count(item)
+    new_cart[new_cart.index(item)][item.keys[0]][:count] = cart.count(item)
   end
 
   new_cart.uniq
