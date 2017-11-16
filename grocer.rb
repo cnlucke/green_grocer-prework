@@ -70,7 +70,7 @@ def apply_clearance(cart)
   new_cart
 end
 
-def checkout(cart:[], coupons:[])
+def checkout(cart, coupons)
   new_cart = {}
   total = 0.00
 
