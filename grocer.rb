@@ -18,10 +18,12 @@ def apply_coupons(cart, coupons)
   cart.each do |item, item_info|
     if item == coupon_item
       puts "item_info: #{item_info}"
-      if item_info[:count] >= coupon_num
+      if item_info[:count] > coupon_num
         new_cart[item] = {}
         new_cart[item] = item_info
         puts "item_info[:count]: #{item_info[:count]}!"
+        puts "coupon_num: #{coupon_num}!"
+
         new_cart[item][:count] = item_info[:count] % coupon_num
         new_cart[item + " W/COUPON"] = {}
         new_cart[item + " W/COUPON"][:price] = coupon_cost
