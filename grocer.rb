@@ -10,7 +10,7 @@ def consolidate_cart(cart)
 end
 
 def apply_coupons(cart, coupons)
-  new_cart = []
+  new_cart = {}
   coupon_item = ""
 
   coupons.each do |coupon|
@@ -21,7 +21,9 @@ def apply_coupons(cart, coupons)
     cart.each do |item, item_info|
 
       if cart.has_key?(coupon_item)
-
+        #apply coupon
+      else #add item without coupon
+        new_cart[item] = item_info
       end
     end
   end
