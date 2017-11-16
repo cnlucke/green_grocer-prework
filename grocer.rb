@@ -16,8 +16,9 @@ def apply_coupons(cart, coupons)
   coupon_cost = coupons[:cost]
 
   cart.each do |item, item_info|
-    if item == coupon_item.to_s
+    if item == coupon_item
       #apply coupon
+      puts "APPLY COUPON!"
     else #add item without coupon
       new_cart[item] = item_info
     end
