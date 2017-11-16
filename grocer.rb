@@ -18,9 +18,9 @@ def apply_coupons(cart, coupons)
   cart.each do |item, item_info|
     if item == coupon_item
       if item_info[:count] >= coupon_num
+        puts "APPLY COUPON!"
         new_cart[item] = {}
         new_cart[item + " W/COUPON"] = {}
-        puts "APPLY COUPON!"
       else #coupon doesn't apply, add without coupon
         new_cart[item] = item_info
       end
