@@ -15,12 +15,11 @@ def apply_coupons(cart, coupons)
 
   cart.each do |item, item_info|
     # is there a coupon for this item? If so, save info
-    coupons.detect { |coupon| coupon[:item] == item }
-      if
-        coupon_item = coupon[:item]
-        coupon_num = coupon[:num]
-        coupon_cost = coupon[:cost]
-      end
+    coupon_match = coupons.detect { |coupon| coupon[:item] == item }
+    if !coupon_match.nil?
+      coupon_item = coupon[:item]
+      coupon_num = coupon[:num]
+      coupon_cost = coupon[:cost]
     end
 
     if item == coupon_item
