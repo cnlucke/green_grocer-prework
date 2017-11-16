@@ -20,8 +20,9 @@ def apply_coupons(cart, coupons)
 
     cart.each do |item, item_info|
 
-    if cart.has_key?(coupon_item)
+      if cart.has_key?(coupon_item)
 
+      end
     end
   end
 
