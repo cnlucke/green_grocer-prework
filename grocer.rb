@@ -6,7 +6,7 @@ def consolidate_cart(cart)
     new_cart[new_cart.index(item)][item.keys[0]][:count] = cart.count(item)
   end
 
-  new_cart.uniq
+  new_cart
 end
 
 def apply_coupons(cart, coupons)
