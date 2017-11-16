@@ -8,6 +8,9 @@ def consolidate_cart(cart)
       new_cart[item] = item_info
       new_cart[item][:count] = 1
     end
+  end
+
+  new_cart
 end
 
 def apply_coupons(cart, coupons)
