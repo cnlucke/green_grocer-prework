@@ -21,7 +21,7 @@ def apply_coupons(cart, coupons)
         puts "APPLY COUPON!"
         new_cart[item] = {}
         new_cart[item] = item_info
-        new_cart[item][:count] % coupon_num
+        new_cart[item][:count] = item_info[:count] % coupon_num
         new_cart[item + " W/COUPON"] = {}
         new_cart[item + " W/COUPON"][:price] = coupon_cost
         new_cart[item + " W/COUPON"][:clearance] = item_info[:clearance]
