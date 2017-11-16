@@ -22,7 +22,7 @@ def apply_coupons(cart, coupons)
 
     if cart.has_key?(coupon_item)
 
-
+    end
   end
 
   new_cart
