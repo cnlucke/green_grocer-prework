@@ -11,7 +11,7 @@ end
 
 def apply_coupons(cart, coupons)
   new_cart = {}
-  coupon_item = ""
+  coupon_item = 0
 
   coupons.each do |coupon|
     coupon_item = coupon[:item]
