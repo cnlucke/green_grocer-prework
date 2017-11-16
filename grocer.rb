@@ -11,9 +11,9 @@ end
 
 def apply_coupons(cart, coupons)
   new_cart = {}
-  coupon_item = coupon[:item]
-  coupon_num = coupon[:num]
-  coupon_cost = coupon[:cost]
+  coupon_item = coupons[:item]
+  coupon_num = coupons[:num]
+  coupon_cost = coupons[:cost]
 
   cart.each do |item, item_info|
     if cart.has_key?(coupon_item)
