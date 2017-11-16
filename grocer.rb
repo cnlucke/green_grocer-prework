@@ -85,7 +85,7 @@ def checkout(cart, coupons)
 
   # If, after applying the coupon discounts and the clearance discounts, the cart's total is over $100, then apply a 10% discount.
   if total > 100
-    total = (total * .90).round(2)
+    total = (total * 0.90).round(2)
   end
 
   total
