@@ -1,7 +1,7 @@
 def consolidate_cart(cart)
   new_cart = []
 
-  cart.each do |item|
+  cart.uniq.each do |item|
     new_cart << item
     new_cart[new_cart.index(item)][item.keys[0]][:count] = cart.count(item)
   end
