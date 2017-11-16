@@ -61,12 +61,12 @@ def apply_clearance(cart)
     new_cart[item][:clearance] = item_info[:clearance]
     new_cart[item][:count] = item_info[:count]
     if item_info[:clearance]
-      new_cart[item][:price] = item_info[:price] * 0.8
+      new_cart[item][:price] = (item_info[:price] * 0.8).round(1)
     else
       new_cart[item][:price] = item_info[:price]
     end
   end
-  
+
   new_cart
 end
 
