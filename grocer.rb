@@ -11,17 +11,11 @@ end
 
 def apply_coupons(cart, coupons)
   new_cart = {}
-  coupon_item = ""
-  coupon_num = 0
-  coupon_cost = 0.0
+  coupon_item = coupon[:item]
+  coupon_num = coupon[:num]
+  coupon_cost = coupon[:cost]
 
-  coupons.each do |coupon|
-    coupon_item = coupon[:item]
-    coupon_num = coupon[:num]
-    coupon_cost = coupon[:cost]
-
-    cart.each do |item, item_info|
-
+  cart.each do |item, item_info|
       if cart.has_key?(coupon_item)
         #apply coupon
       else #add item without coupon
